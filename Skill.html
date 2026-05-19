@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Skills</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f3f4f6;
+      padding: 50px 20px;
+    }
+
+    /* Navbar */
+
+    .navlist {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 35px;
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .navlist li a {
+      text-decoration: none;
+      font-size: 20px;
+      color: #111827;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .navlist li a:hover,
+    .navlist li a.active {
+      color: #2563eb;
+    }
+
+    /* Github Icon */
+
+    .right-icons {
+      position: absolute;
+      top: 25px;
+      right: 40px;
+    }
+
+    .right-icons a {
+      font-size: 38px;
+      color: #111827;
+      transition: 0.3s ease;
+    }
+
+    .right-icons a:hover {
+      color: #2563eb;
+      transform: scale(1.2);
+    }
+
+    /* Skills Section */
+
+    .skills-section {
+      max-width: 1300px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .skills-section h1 {
+      font-size: 60px;
+      margin-bottom: 15px;
+      color: #1f2937;
+    }
+
+    .skills-section h1 span {
+      color: #2563eb;
+    }
+
+    .skills-section p {
+      font-size: 24px;
+      color: #6b7280;
+      margin-bottom: 50px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .skill-card {
+      padding: 30px 20px;
+      border-radius: 18px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: 0.4s ease;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .skill-card h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .skill-card span {
+      font-size: 20px;
+      opacity: 0.8;
+    }
+
+    /* Different Colors */
+
+    .html {
+      background: #fde8d0;
+      color: #b45309;
+    }
+
+    .css {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .js {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .react {
+      background: #cffafe;
+      color: #0e7490;
+    }
+
+    .bootstrap {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
+    .node {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .github {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+
+    /* Animation */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation Delay */
+
+    .skill-card:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .skill-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .skill-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .skill-card:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .skill-card:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .skill-card:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    .skill-card:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+
+  <ul class="navlist">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="Skill.html">Skill</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <!-- Github Icon -->
+
+  <div class="right-icons">
+    <a href="https://github.com/prasannathota456-ops" target="_blank">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </div>
+
+  <!-- Skills Section -->
+
+  <section class="skills-section">
+
+    <h1>My <span>Skills</span></h1>
+
+    <p>Technologies and tools I use to bring ideas to life</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-card html">
+        <h2>HTML5</h2>
+        <span>Frontend</span>
+      </div>
+
+      <div class="skill-card css">
+        <h2>CSS3</h2>
+        <span>Frontend</span>
+      </div>
+
+      <div class="skill-card js">
+        <h2>JavaScript</h2>
+        <span>Frontend</span>
+      </div>
+
+      <div class="skill-card react">
+        <h2>React.js</h2>
+        <span>Frontend</span>
+      </div>
+
+      <div class="skill-card bootstrap">
+        <h2>Bootstrap</h2>
+        <span>UI</span>
+      </div>
+
+      <div class="skill-card node">
+        <h2>Node.js</h2>
+        <span>Backend</span>
+      </div>
+
+      <div class="skill-card github">
+        <h2>GitHub</h2>
+        <span>Tools</span>
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+
+</html>

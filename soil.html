@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOIL PULSE</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background: #eef2f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container{
+            width: 400px;
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1{
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .subtitle{
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        input{
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #2e7d32;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #1b5e20;
+        }
+
+        .preview{
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .result{
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .good{
+            background: #c8e6c9;
+        }
+
+        .moderate{
+            background: #fff3cd;
+        }
+
+        .critical{
+            background: #ffcdd2;
+        }
+
+        .result p{
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌱 SOIL PULSE</h1>
+
+    <p class="subtitle">Digital Soil Health Passport</p>
+
+    <input type="number" id="n" placeholder="Nitrogen (N)">
+
+    <input type="number" id="p" placeholder="Phosphorus (P)">
+
+    <input type="number" id="k" placeholder="Potassium (K)">
+
+    <input type="number" id="ph" placeholder="pH Value">
+
+    <input type="number" id="moisture" placeholder="Moisture (%)">
+
+    <input type="file" id="soilImage" accept="image/*">
+
+    <img id="preview" class="preview">
+
+    <button onclick="analyzeSoil()">Analyze Soil</button>
+
+    <div id="output"></div>
+
+</div>
+
+<script>
+
+const soilImage = document.getElementById("soilImage");
+const preview = document.getElementById("preview");
+
+// Image Preview
+soilImage.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(file){
+
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+
+            preview.src = e.target.result;
+            preview.style.display = "block";
+
+        }
+
+        reader.readAsDataURL(file);
+
+    }
+
+});
+
+// Soil Types
+const soilTypes = [
+
+    {
+        name: "Black Soil",
+        fertility: "High",
+        years: "10 - 15 Years",
+        crops: "Cotton, Groundnut, Sunflower"
+    },
+
+    {
+        name: "Red Soil",
+        fertility: "Medium",
+        years: "6 - 10 Years",
+        crops: "Millets, Pulses"
+    },
+
+    {
+        name: "Alluvial Soil",
+        fertility: "Very High",
+        years: "15 - 20 Years",
+        crops: "Rice, Wheat, Sugarcane"
+    },
+
+    {
+        name: "Sandy Soil",
+        fertility: "Low",
+        years: "3 - 5 Years",
+        crops: "Watermelon, Coconut"
+    },
+
+    {
+        name: "Clay Soil",
+        fertility: "Medium",
+        years: "8 - 12 Years",
+        crops: "Paddy, Lettuce"
+    },
+
+    {
+        name: "Laterite Soil",
+        fertility: "Low",
+        years: "4 - 7 Years",
+        crops: "Tea, Coffee, Cashew"
+    },
+
+    {
+        name: "Loamy Soil",
+        fertility: "Very High",
+        years: "15 - 18 Years",
+        crops: "Vegetables, Fruits"
+    },
+
+    {
+        name: "Peaty Soil",
+        fertility: "High",
+        years: "8 - 10 Years",
+        crops: "Root Vegetables"
+    },
+
+    {
+        name: "Chalky Soil",
+        fertility: "Low",
+        years: "5 - 8 Years",
+        crops: "Spinach, Beetroot"
+    },
+
+    {
+        name: "Silty Soil",
+        fertility: "High",
+        years: "10 - 14 Years",
+        crops: "Tomato, Onion"
+    }
+
+];
+
+function analyzeSoil(){
+
+    let N = parseFloat(document.getElementById("n").value);
+    let P = parseFloat(document.getElementById("p").value);
+    let K = parseFloat(document.getElementById("k").value);
+    let pH = parseFloat(document.getElementById("ph").value);
+    let moisture = parseFloat(document.getElementById("moisture").value);
+
+    if(
+        isNaN(N) ||
+        isNaN(P) ||
+        isNaN(K) ||
+        isNaN(pH) ||
+        isNaN(moisture)
+    ){
+        alert("Please enter all values");
+        return;
+    }
+
+    if(soilImage.files.length === 0){
+        alert("Please upload soil image");
+        return;
+    }
+
+    // Random Soil Detection
+    let randomSoil =
+        soilTypes[Math.floor(Math.random() * soilTypes.length)];
+
+    // Soil Score
+    let score = ((N + P + K) / 3).toFixed(1);
+
+    let status = "";
+    let advice = "";
+    let risk = "";
+    let cssClass = "";
+
+    // Soil Status
+    if(score >= 35 && moisture >= 40){
+
+        status = "GOOD 🟢";
+        advice = "Suitable for farming.";
+        risk = "LOW RISK ✅";
+        cssClass = "good";
+
+    }
+
+    else if(score >= 20){
+
+        status = "MODERATE 🟡";
+        advice = "Add compost and fertilizer.";
+        risk = "MEDIUM RISK ⚠";
+        cssClass = "moderate";
+
+    }
+
+    else{
+
+        status = "CRITICAL 🔴";
+        advice = "Immediate soil treatment required.";
+        risk = "HIGH RISK 🚨";
+        cssClass = "critical";
+
+    }
+
+    // Output
+    document.getElementById("output").innerHTML = `
+
+        <div class="result ${cssClass}">
+
+            <h2>🌍 Soil Report</h2>
+
+            <p><b>Detected Soil:</b> ${randomSoil.name}</p>
+
+            <p><b>Fertility:</b> ${randomSoil.fertility}</p>
+
+            <p><b>Land Usability:</b> ${randomSoil.years}</p>
+
+            <p><b>Best Crops:</b> ${randomSoil.crops}</p>
+
+            <p><b>Soil Health Score:</b> ${score}</p>
+
+            <p><b>Status:</b> ${status}</p>
+
+            <p><b>Future Soil Risk:</b> ${risk}</p>
+
+            <p><b>Recommendation:</b> ${advice}</p>
+
+        </div>
+
+    `;
+
+}
+
+</script>
+
+</body>
+</html>

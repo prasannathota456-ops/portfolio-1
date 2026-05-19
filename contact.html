@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:white;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#111827;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+      color:#38bdf8;
+    }
+
+    .navlist{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
+
+    .navlist a{
+      text-decoration:none;
+      color:white;
+      font-size:18px;
+    }
+
+    .navlist a:hover{
+      color:#38bdf8;
+    }
+
+    .right-icons a{
+      color:white;
+      font-size:28px;
+    }
+
+    /* CONTACT */
+
+    .contact-section{
+      min-height:100vh;
+      padding:80px 8%;
+      background: radial-gradient(circle at top left,#1e3a8a,#0f172a 50%);
+    }
+
+    .contact-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .contact-title h1{
+      font-size:55px;
+    }
+
+    .contact-title span{
+      color:#38bdf8;
+    }
+
+    .contact-title p{
+      color:#cbd5e1;
+      font-size:20px;
+    }
+
+    .contact-container{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+    }
+
+    /* LEFT */
+
+    .contact-info{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .info-box{
+      background:rgba(255,255,255,0.08);
+      padding:20px;
+      border-radius:15px;
+      display:flex;
+      gap:15px;
+      align-items:center;
+    }
+
+    .icon{
+      width:60px;
+      height:60px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      font-size:24px;
+    }
+
+    .email{background:#f43f5e;}
+    .phone{background:#22c55e;}
+    .linkedin{background:#3b82f6;}
+
+    /* RIGHT */
+
+    .contact-card{
+      background:rgba(255,255,255,0.08);
+      padding:30px;
+      border-radius:20px;
+    }
+
+    .input-box{
+      margin-bottom:15px;
+    }
+
+    .input-box input,
+    .input-box textarea{
+      width:100%;
+      padding:15px;
+      border:none;
+      outline:none;
+      border-radius:10px;
+      background:rgba(255,255,255,0.1);
+      color:white;
+    }
+
+    .btn{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      background:linear-gradient(135deg,#3b82f6,#9333ea);
+      color:white;
+      font-size:18px;
+      cursor:pointer;
+    }
+
+    @media(max-width:900px){
+      .contact-container{
+        grid-template-columns:1fr;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Portfolio</div>
+
+  <ul class="navlist">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="Skill.html">Skill</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+
+  <div class="right-icons">
+    <a href="https://github.com/prasannathota456-ops" target="_blank">
+      <i class="fa-brands fa-github"></i>
+    </a>
+  </div>
+</nav>
+
+<!-- CONTACT -->
+<section class="contact-section">
+
+  <div class="contact-title">
+    <h1>Contact <span>Me</span></h1>
+    <p>Let’s build something amazing together</p>
+  </div>
+
+  <div class="contact-container">
+
+    <!-- LEFT -->
+    <div class="contact-info">
+
+      <div class="info-box">
+        <div class="icon email"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <h3>Email</h3>
+          <p>prasannathota456@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="icon phone"><i class="fa-solid fa-phone"></i></div>
+        <div>
+          <h3>Phone</h3>
+          <p>8309178411</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="icon linkedin"><i class="fa-brands fa-linkedin-in"></i></div>
+        <div>
+          <h3>LinkedIn</h3>
+          <p>linkedin.com/in/PrasannaThota</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="contact-card">
+
+      <h2>Send Message</h2>
+
+      <form id="contact-form">
+
+        <div class="input-box">
+          <input type="text" name="from_name" placeholder="Your Name" required>
+        </div>
+
+        <div class="input-box">
+          <input type="email" name="from_email" placeholder="Your Email" required>
+        </div>
+
+        <div class="input-box">
+          <textarea name="message" placeholder="Your Message" required></textarea>
+        </div>
+
+        <button class="btn" type="submit">
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+  emailjs.init("rS-UWBCK7OEBmxj2Q");
+
+  document.getElementById("contact-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_gxw4sls",
+      "template_hyx1ap7",
+      this
+    )
+    .then(() => {
+      alert("Message sent successfully!");
+      this.reset();
+    })
+    .catch((err) => {
+      alert("Failed to send message");
+      console.log(err);
+    });
+
+  });
+
+</script>
+
+</body>
+</html>
